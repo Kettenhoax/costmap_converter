@@ -69,6 +69,9 @@ ament_target_dependencies(standalone_converter
   ${dependencies}
 )
 
+target_compile_definitions(costmap_converter PUBLIC "PLUGINLIB__DISABLE_BOOST_FUNCTIONS")
+target_compile_definitions(standalone_converter PUBLIC "PLUGINLIB__DISABLE_BOOST_FUNCTIONS")
+
 install(TARGETS costmap_converter
    DESTINATION lib
 )
