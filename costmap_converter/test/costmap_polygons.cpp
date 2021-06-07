@@ -122,10 +122,10 @@ TEST_F(CostmapToPolygonsDBSMCCHTest, dbScan)
   std::vector< std::vector<costmap_converter::CostmapToPolygonsDBSMCCH::KeyPoint> > clusters;
   costmap_to_polygons.dbScan(clusters);
   
-  ASSERT_EQ(3, clusters.size());
-  ASSERT_EQ(2, clusters[0].size()); // noisy points not belonging to a cluster
-  ASSERT_EQ(costmap_to_polygons.parameters().max_pts_, clusters[1].size()); // first cluster at (0,0)
-  ASSERT_EQ(costmap_to_polygons.parameters().max_pts_/2 + 1, clusters[2].size()); // second cluster at (1,1)
+  ASSERT_EQ(3lu, clusters.size());
+  ASSERT_EQ(2lu, clusters[0].size()); // noisy points not belonging to a cluster
+  ASSERT_EQ(costmap_to_polygons.parameters().max_pts_, static_cast<int>(clusters[1].size())); // first cluster at (0,0)
+  ASSERT_EQ(costmap_to_polygons.parameters().max_pts_/2 + 1, static_cast<int>(clusters[2].size())); // second cluster at (1,1)
 }
 
 TEST(CostmapToPolygonsDBSMCCH, EmptyMap)
